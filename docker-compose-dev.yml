@@ -16,4 +16,4 @@ services:
     volumes:
       - /app/node_modules
       - .:/app # . is current dir outside container
-    command: ["npm", "run", "test"]
+    command: ["npm", "run", "test"] # override the starting command when test container starts.
