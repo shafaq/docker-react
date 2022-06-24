@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run -e CI=true myimage npm run test 
+
+deploy: # do this for deployment of the application
+  provider: elasticbeanstalk
+  region: "us-east-1" # get from the beanstalk application url
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-916299325519" # get from S3 service, a bucket is already created there
+  bucket_path: "docker-react" # bucket path is usually the name of the application, is created when first time the app is deployed
+  on: 
+    branch: master # only deploy on changes to master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"

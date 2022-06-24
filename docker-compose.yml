@@ -1,19 +1,9 @@
-version: '3'
-services:
-  web:
-    build: 
-      context : . # from where to pull the files. 
-      dockerfile: Dockerfile.dev 
-    ports:
-      - "3000:3000"
-    volumes:
-      - /app/node_modules  # dont map this directory inside container
-      - .:/app # . is current dir outside container
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app # . is current dir outside container
-    command: ["npm", "run", "test"]
+    version: '3'
+    services:
+      web:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        ports:
+          - '80:80'
+          
